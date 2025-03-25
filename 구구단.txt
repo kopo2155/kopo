@@ -1,0 +1,22 @@
+a = 1
+while a <= 9:
+  if a % 2 == 1 :#홀수라면
+   i = 1
+   print(str(a) + '단입니다.')
+   while i <= 9:
+    if  i % 2 == 1: #홀수라면 
+     print(str(a) + 'x' + str(i) + ' = ' + str(i * a))#홀수 * 홀수 
+    i += 1
+  a += 1  
+
+
+a = 2
+while a <= 9:
+  if a % 2 == 0: #짝수라면
+   i = 2
+   print(str(a) + '단입니다.')
+   while i <= 9:
+    if  i % 2 == 0: #짝수라면
+     print(str(a) + 'x' + str(i) + ' = ' + str(i * a))#짝수 * 짝수
+    i += 2  
+  a += 2    

@@ -1,0 +1,45 @@
+i = int ()
+while True:
+
+  tuple_1 = ('1.',' 2.',' 3.')
+  tuple_2 = ('오렌지주스', '커피', '콜라')
+  tuple_3 = ('(100원)', '(200원)', '(300원)')
+  for i in range(0,3):
+      if(i < 2):
+         print(tuple_1[i] + tuple_2[i] + tuple_3[i], end = "")
+      else:
+         print(tuple_1[i] + tuple_2[i] + tuple_3[i])
+
+  coin = float (input('동전을 넣으세요'))
+  if int(coin) == coin and coin > 0:
+      drink = float (input('음료를 고르세요.'))
+      if drink == 1:
+         if coin >= 100:
+           remain = coin - 100
+           print(tuple_2[0]+'가 곧 제공됩니다.')
+           print('거스름돈은 {}원입니다.'.format(remain))
+         else:
+           print('잔액이 부족합니다.')
+
+      elif drink == 2:
+          if coin >= 200:
+             remain = coin - 200
+             print('커피가 곧 제공됩니다.')
+             print('거스름돈은 {}원입니다.'.format(remain))
+          else:
+             print('잔액이 부족합니다.')
+
+      elif drink == 3:
+           if coin >= 300:
+             remain = coin - 300
+             print('콜라가 곧 제공됩니다.')
+             print('거스름돈은 {}원입니다.'.format(remain))
+           else:
+             print('잔액이 부족합니다.')
+  
+      else:
+         print('잘못된 값입니다.')
+
+  else:
+    print('잘못된 값입니다.')
+coin = 0

@@ -1,3 +1,18 @@
+import openpyxl
+
+wb = openpyxl.Workbook()
+ws = wb.active
+##파일업로드
+
+
+
+files = os.listdir('./')
+print(files)
+print(files[3])
+
+##파일 위치 확인
+
+
 df= pd.read_excel('주유소.xlsx')
 print(df.columns)
 date = []

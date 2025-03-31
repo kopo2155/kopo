@@ -1,0 +1,48 @@
+df= pd.read_excel('주유소.xlsx')
+print(df.columns)
+date = []
+common = []
+lite = []
+minus = []
+price = []
+
+for  i in range(0, len(df)):
+   date.append(df.loc[i][0])
+
+for i in (date):
+    common_temp = []
+    lite_temp = []
+    minus_temp = []
+    price_temp = []
+    for j in range(0, len(df)):
+       if df.loc[j][0] == i:
+         common_temp.append(df.loc[j][1])
+         lite_temp.append(df.loc[j][4])
+         minus_temp.append(df.loc[j][5])
+         price_temp.append(df.loc[j][8])
+    common.append(np.sum(common_temp)) 
+    lite.append(np.sum(lite_temp))
+    minus.append(np.sum(minus_temp))
+    price.append(np.sum(price_temp))
+
+    print(i, np.sum(common), np.sum(lite), np.sum(minus), np.sum(price))
+
+
+import matplotlib.pyplot as plt
+
+x = date
+y1 = common
+y2 = lite
+y3 = minus
+y4 = price
+
+x = [str(d) for d in x]  
+
+
+plt.plot(x,y1, label='common') 
+plt.plot(x,y2, label='lite')
+plt.plot(x,y3, label='minus')
+plt.plot(x,y4, label='international price')
+
+plt.legend()
+plt.show()

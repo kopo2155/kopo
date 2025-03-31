@@ -1,3 +1,8 @@
+import pandas as pd
+import numpy as np
+import os
+#판다스
+
 from google.colab import files
 
 f = files.upload( )
@@ -12,7 +17,7 @@ print(files[3])
 ##파일 위치 확인
 
 
-df= pd.read_excel('주유소.xlsx')
+df = pd.read_excel('주유소.xlsx')
 print(df.columns)
 date = []
 common = []
@@ -53,10 +58,10 @@ y4 = price
 x = [str(d) for d in x]  
 
 
-plt.plot(x,y1, label='common') 
-plt.plot(x,y2, label='lite')
-plt.plot(x,y3, label='minus')
-plt.plot(x,y4, label='international price')
+plt.plot(x,y1, label = 'common') 
+plt.plot(x,y2, label = 'lite')
+plt.plot(x,y3, label = 'minus')
+plt.plot(x,y4, label = 'international price')
 
 plt.legend()
 plt.show()

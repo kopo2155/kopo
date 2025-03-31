@@ -1,7 +1,6 @@
-import openpyxl
+from google.colab import files
 
-wb = openpyxl.Workbook()
-ws = wb.active
+f = files.upload( )
 ##파일업로드
 
 

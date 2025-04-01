@@ -23,4 +23,4 @@ try:
         break
       print()
 except:
-  print('잘못된 숫자입니다.')
+  print('잘못된 입력값입니다.')

@@ -1,16 +1,24 @@
+
 df= pd.read_excel('주유소.xlsx')
 print(df.columns)
 date = []
 common = []
+hcommon = []
+lcommon = []
 lite = []
+hlite = []
+llite = []
 minus = []
 price = []
+hprice = []
+lprice = []
 
 for  i in range(0, len(df)):
    date.append(df.loc[i][0])
 
 for i in (date):
     common_temp = []
+    hcommon_temp = []
     lite_temp = []
     minus_temp = []
     price_temp = []
@@ -24,6 +32,28 @@ for i in (date):
     lite.append(np.sum(lite_temp))
     minus.append(np.sum(minus_temp))
     price.append(np.sum(price_temp))
+
+for j in range(0, len(df)):    
+  if df.loc[j][1] == np.max(common):
+       hcommon.append(df.loc[j][0])
+  elif df.loc[j][1] == np.min(common):
+       lcommon.append(df.loc[j][0])
+for j in range(0, len(df)):
+  if df.loc[j][4] == np.max(lite):
+       hlite.append(df.loc[j][0])     
+  elif df.loc[j][4] == np.min(lite):
+       llite.append(df.loc[j][0])
+for j in range(0, len(df)):       
+  if df.loc[j][8] == np.max(price):
+       hprice.append(df.loc[j][0])  
+  elif df.loc[j][8] == np.min(price):
+       lprice.append(df.loc[j][0])              
+
+
+
+
+
+
 
     #print(i, np.sum(common), np.sum(lite), np.sum(minus), np.sum(price))
 
@@ -50,11 +80,17 @@ plt.show()
 print("휘발유 최소가격 : ",np.min(common)) 
 print("휘발유 최대가격 : ",np.max(common))
 print("휘발유 평균가격 : ",np.average(common))
+print('휘발유 최대가격일자 :', np.max(hcommon))
+print('휘발유 최저가격일자 :', np.max(lcommon))
 print("---------------------------------------")
 print("경유 최소가격 : ",np.min(lite)) 
 print("경유 최대가격 : ",np.max(lite))
 print("경유 평균가격 : ",np.average(lite))
+print('경유 최대가격일자 :', np.max(hlite))
+print('경유 최저가격일자 :', np.max(llite))
 print("---------------------------------------")
 print("국제유가 최소가격 : ",np.min(price)) 
 print("국제유가 최대가격 : ",np.max(price))
 print("국제유가 평균가격 : ",np.average(price))
+print('국제유가 최대가격일자 :', np.max(hprice))
+print('국제유가 최저가격일자 :', np.max(lprice))

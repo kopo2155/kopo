@@ -68,12 +68,15 @@ y4 = price
 
 x = [str(d) for d in x]
 
-
+plt.figure(figsize=(20,10))
 plt.plot(x,y1, label='gasoline')
 plt.plot(x,y2, label='disel')
 plt.plot(x,y3, label='gas-disel')
 plt.plot(x,y4, label='oil price')
-
+plt.xticks(fontsize=7)
+plt.xticks(rotation=90)
+plt.xlabel('date', loc = 'right')
+plt.ylabel('won', loc = 'top')
 plt.legend()
 plt.show()
 

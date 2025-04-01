@@ -4,5 +4,8 @@ def check_prime_num(x):
          return False
     return True
 
-number = int(input('판별할 자연수를 입력하세요:'))
-print(check_prime_num(number))
+number = float(input('판별할 자연수를 입력하세요:'))
+if number == 1 or number == 2 or number % 1 != 0 or number <= 0:
+  print('잘못된 수')
+else:
+  print(check_prime_num(number))

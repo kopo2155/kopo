@@ -19,5 +19,5 @@ else:
     StartNum -= 2
     Blank -= 1
     if StartNum < 0:
-        break
+      break
     print()

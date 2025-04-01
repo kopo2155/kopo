@@ -1,5 +1,5 @@
 i = int ()
-while True:
+while True: # 결과값은 boolean / true or false
   tuple_1 = ('오렌지주스', '커피', '콜라')
   print('1. 오렌지주스(100원), 2. 커피(200원), 3. 콜라(300원)')
   coin = float (input('동전을 넣으세요'))
@@ -27,7 +27,7 @@ while True:
       else:
         print('잔액이 부족합니다.')
     else:
-      print('잘못된 값입니다.')
+      print('잘못된 값입니다.') # 없는 메뉴에 대한 잘못된 값 출력
   else:
-    print('잘못된 값입니다.')
+    print('잘못된 값입니다.') # 금액에 대한 잘못된 값을 출력
 coin = 0

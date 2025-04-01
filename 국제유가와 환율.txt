@@ -1,0 +1,38 @@
+df= pd.read_excel('주유소.xlsx')
+print(df.columns)
+date = []
+price_per_liter = []
+exchange_rate = []
+
+for  i in range(0, len(df)):
+   date.append(df.loc[i][0])
+
+for i in (date):
+    price_per_liter_temp = []
+    #exchange_rate_temp = []
+    for j in range(0, len(df)):
+       if df.loc[j][0] == i:
+         price_per_liter_temp.append(df.loc[j][8])
+         exchange_rate.append(float(df.loc[j][7].replace(',', '')))    
+    price_per_liter.append(np.sum(price_per_liter_temp))
+   # exchange_rate_temp.append(float(df.loc[j][7].replace(',', '')))
+    #print(i, np.sum(common), np.sum(lite), np.sum(minus), np.sum(price))
+
+import matplotlib.pyplot as plt
+
+x = date
+y1 = price_per_liter
+y2 = exchange_rate
+
+x = [str(d) for d in x]
+
+plt.figure(figsize=(20,10))
+plt.plot(x,y1, label='price_per_liter')
+plt.plot(x,y2, label='exchange_rate')
+
+plt.xticks(fontsize=7)
+plt.xticks(rotation=90)
+plt.xlabel('date', loc = 'right')
+plt.ylabel('won', loc = 'top')
+plt.legend()
+plt.show()

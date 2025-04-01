@@ -1,23 +1,26 @@
-n = float(input())
-n = int(n)
-StartNum = n
-Blank = 2
-num = 1
-if n % 1 != 0 or n < 1:
-  print("잘못된 숫자입니다")
-elif n > 9:
-  print('못합니다.')
-else:
-  for i in range(1, 4): 
-    for j in range(0, Blank):
-      print(" ", end = "") 
-    for k in range(StartNum, n + 1):
-      if num > n:
-        break 
-      print(num, end = "")
-      num += 1
-    StartNum -= 2
-    Blank -= 1
-    if StartNum < 0:
-      break
-    print()
+try:
+  n = float(input())
+  n = int(n)
+  StartNum = n
+  Blank = 2
+  num = 1
+  if n % 1 != 0 or n < 1:
+    print("잘못된 숫자입니다")
+  elif n > 9:
+    print('못합니다.')
+  else:
+    for i in range(1, 4): 
+      for j in range(0, Blank):
+        print(" ", end = "") 
+      for k in range(StartNum, n + 1):
+        if num > n:
+          break 
+        print(num, end = "")
+        num += 1
+      StartNum -= 2
+      Blank -= 1
+      if StartNum < 0:
+        break
+      print()
+except:
+  print('잘못된 숫자입니다.')

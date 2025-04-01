@@ -11,7 +11,7 @@ list1 = list([['c1', '인공지능개론', 'R1', 3],
 
 import pandas as pd
 df = pd.DataFrame(list1, columns = col_names)
-df.to_csv('./timetable.csv', header = True, index = False,
+df.to_csv('./timetable.csv', header = True, index = False, #true 이름값 표시, false 표시안함
 encoding = 'utf-8')
 
 

@@ -4,7 +4,7 @@ try:
   StartNum = n
   Blank = 2
   num = 1
-  if n % 1 != 0 or n < 1:
+  if n % 1 != 0 or n < 1: # if의 조건을 만족하냐 못하냐 -> boolean 결과값
     print("잘못된 숫자입니다")
   elif n > 9:
     print('못합니다.')

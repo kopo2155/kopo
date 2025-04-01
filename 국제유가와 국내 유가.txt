@@ -25,7 +25,7 @@ for i in (date):
     minus.append(np.sum(minus_temp))
     price.append(np.sum(price_temp))
 
-    print(i, np.sum(common), np.sum(lite), np.sum(minus), np.sum(price))
+    #print(i, np.sum(common), np.sum(lite), np.sum(minus), np.sum(price))
 
 
 import matplotlib.pyplot as plt
@@ -50,7 +50,11 @@ plt.show()
 print("휘발유 최소가격 : ",np.min(common)) 
 print("휘발유 최대가격 : ",np.max(common))
 print("휘발유 평균가격 : ",np.average(common))
-
+print("---------------------------------------")
 print("경유 최소가격 : ",np.min(lite)) 
 print("경유 최대가격 : ",np.max(lite))
 print("경유 평균가격 : ",np.average(lite))
+print("---------------------------------------")
+print("국제유가 최소가격 : ",np.min(price)) 
+print("국제유가 최대가격 : ",np.max(price))
+print("국제유가 평균가격 : ",np.average(price))

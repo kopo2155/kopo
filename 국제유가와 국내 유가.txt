@@ -1,23 +1,4 @@
-import pandas as pd
-import numpy as np
-import os
-#판다스
-
-from google.colab import files
-
-f = files.upload( )
-##파일업로드
-
-
-
-files = os.listdir('./')
-print(files)
-print(files[3])
-
-##파일 위치 확인
-
-
-df = pd.read_excel('주유소.xlsx')
+df= pd.read_excel('주유소.xlsx')
 print(df.columns)
 date = []
 common = []
@@ -39,7 +20,7 @@ for i in (date):
          lite_temp.append(df.loc[j][4])
          minus_temp.append(df.loc[j][5])
          price_temp.append(df.loc[j][8])
-    common.append(np.sum(common_temp)) 
+    common.append(np.sum(common_temp))
     lite.append(np.sum(lite_temp))
     minus.append(np.sum(minus_temp))
     price.append(np.sum(price_temp))
@@ -55,13 +36,21 @@ y2 = lite
 y3 = minus
 y4 = price
 
-x = [str(d) for d in x]  
+x = [str(d) for d in x]
 
 
-plt.plot(x,y1, label = 'common') 
-plt.plot(x,y2, label = 'lite')
-plt.plot(x,y3, label = 'minus')
-plt.plot(x,y4, label = 'international price')
+plt.plot(x,y1, label='gasoline')
+plt.plot(x,y2, label='disel')
+plt.plot(x,y3, label='gas-disel')
+plt.plot(x,y4, label='oil price')
 
 plt.legend()
 plt.show()
+
+print("휘발유 최소가격 : ",np.min(common)) 
+print("휘발유 최대가격 : ",np.max(common))
+print("휘발유 평균가격 : ",np.average(common))
+
+print("경유 최소가격 : ",np.min(lite)) 
+print("경유 최대가격 : ",np.max(lite))
+print("경유 평균가격 : ",np.average(lite))

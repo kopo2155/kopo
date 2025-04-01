@@ -17,7 +17,7 @@ try:
           break 
         print(num, end = "")
         num += 1
-      StartNum -= 2
+      StartNum -= 2 ##숫자가 찍히는 숫자를 늘리기 위함 2씩 감소하면서 전체 횟수가 증가
       Blank -= 1
       if StartNum < 0:
         break

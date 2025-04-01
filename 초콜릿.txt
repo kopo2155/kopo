@@ -8,20 +8,20 @@ print('모양:', data.shape)
 print('원소 수:', data.size)
 print(data)
 
-ratings_mean = data[:, 3].mean()
+ratings_mean = data[:, 3].mean() # 데이터의 모든 4번째열  해당하는 값의 평균
 print(ratings_mean)
 
-high_level = data[data[:, 3] >= 4]
+high_level = data[data[:, 3] >= 4]# 데이터의 4번째 열 값중 가보다 큰 값
 high_id = high_level[:, 0].astype(np.int64)
 print('우수 초콜릿 수 :', high_id.size)
 print(high_id)
 
 high_kakao = high_level[:, 2]
-unique_values, value_counts = np.unique(high_kakao, return_counts = True)
+unique_values, value_counts = np.unique(high_kakao, return_counts = True)# unique -> 중복값을 없앤다. 
 print('카카오 함유량:', unique_values)
 print('함유량별 빈도수:', value_counts)
 
-max_index = np.argmax(value_counts)
+max_index = np.argmax(value_counts)#가장 빈도수가 높은 값의 위치 출력
 print(unique_values[max_index])
 print('우수 초콜릿', high_id.size, '가지 중', value_counts[max_index], 
   '가지의 카카오 함유량이', unique_values[max_index] * 100, '%입니다.')

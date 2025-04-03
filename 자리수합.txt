@@ -3,9 +3,7 @@
 int main()
 {
     int a = 0;
-
-    int result = 0;
-    
+    int result = 0;   
     scanf("%d", &a);
     int b = (int)(a % 10);
     int c = (int)((a % 100) - b)/10;

@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main()
+{
+    int a = 0;
+
+    int result = 0;
+    
+    scanf("%d", &a);
+    int b = (int)(a % 10);
+    int c = (int)((a % 100) - b)/10;
+    int d = (int)((a % 1000) - c - b)/100;
+    result = b + c + d ;
+    printf("%d", result);
+    
+    return 0;
+}

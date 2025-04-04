@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 int main()
@@ -14,17 +13,20 @@ int main()
     b = a%10;
     c = (a%100 - b)/10;
     
-    if (a < 10){
+    if (a < 1){
+     printf("0은 안됩니다.");
+    }
+    else if (a < 10){
      d = b;}
     else if (a < 100){
      d = c;}
     else if (a < 1000){
      d = (a%1000 - b - c)/100;}
-    else{
+        else{
      printf("값이 너무 큽니다.");
     }
     
-    if ( a > 999){
+    if ( a > 999 || a < 1){
         printf("");
     }
     else if (a % 3 == 0 && a % 2 == 0){

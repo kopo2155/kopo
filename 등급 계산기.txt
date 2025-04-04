@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main()
+{
+    int A = 0;
+    float a =0;
+    scanf("%f", &a);
+    if( (int)a >= 90){
+        A = 1;
+    }
+    else if( (int)a >= 80){
+        A = 2;
+    }
+    else if( (int)a >= 70){
+        A = 3;
+    }
+    else if( (int)a >= 60){
+        A = 4;
+    }   
+    
+    
+    if ( a > 0 && a == (int) a){
+    switch((int)A){
+        case(1):
+        printf("A등급 : %f(추가 보너스 10%)", a*1.1);
+        break;
+        case(2):
+        printf("B등급 : %f(추가 보너스 5 %)", a*1.05);
+        break;
+        case(3):
+        printf("C등급 : %f(추가보너스 없음)", a);
+        break;
+        case(4):
+        printf("D등급 : %f(추가보너스 없음)", a);
+        break;
+        default:
+        printf("F등급 : %f(추가보너스 없음)", a);
+    }
+    }
+    else {
+        printf("잘못된 입력입니다.");
+    }
+    return 0;
+}

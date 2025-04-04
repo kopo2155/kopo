@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 int main()
@@ -22,19 +23,19 @@ int main()
     if ( a > 0 && a == (int) a){
     switch((int)A){
         case(1):
-        printf("A등급 : %f(추가 보너스 10%)", a*1.1);
+        printf("A등급 : %0.2f(추가 보너스 10%)", a*1.1);
         break;
         case(2):
-        printf("B등급 : %f(추가 보너스 5 %)", a*1.05);
+        printf("B등급 : %0.2f(추가 보너스 5 %)", a*1.05);
         break;
         case(3):
-        printf("C등급 : %f(추가보너스 없음)", a);
+        printf("C등급 : %0.2f(추가보너스 없음)", a);
         break;
         case(4):
-        printf("D등급 : %f(추가보너스 없음)", a);
+        printf("D등급 : %0.2f(추가보너스 없음)", a);
         break;
         default:
-        printf("F등급 : %f(추가보너스 없음)", a);
+        printf("F등급 : %0.2f(추가보너스 없음)", a);
     }
     }
     else {

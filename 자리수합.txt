@@ -2,14 +2,19 @@
 
 int main()
 {
-    int a = 0;
+    float a = 0;
     int result = 0;   
-    scanf("%d", &a);
-    int b = (int)(a % 10);
-    int c = (int)((a % 100) - b)/10;
-    int d = (int)((a % 1000) - c - b)/100;
+    scanf("%f", &a);
+    int b = (int)a % 10;
+    int c = (((int)a % 100) - b)/10;
+    int d = (((int)a % 1000) - c - b)/100;
     result = b + c + d ;
-    printf("%d", result);
+    if (a == (int)a){
+      printf("%d", result);    
+    }
+    else{
+      printf("정수를 입력하세요");
+    }
     
     return 0;
 }

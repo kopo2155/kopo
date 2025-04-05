@@ -21,7 +21,7 @@ int main()
     else if (a < 100){
      d = c;}
     else if (a < 1000){
-     d = (a%1000 - b - c)/100;}
+     d = (a%1000 - b - c) / 100;}
         else{
      printf("값이 너무 큽니다.");
     }
@@ -32,7 +32,7 @@ int main()
     else if (a % 3 == 0 && a % 2 == 0){
         printf("%d는 특별한 수이다.", a);
     } 
-    else if ( (b + c + d)%7 == 0){
+    else if ( (b + c + d) % 7 == 0){
         printf("%d는 특별한 수이다.", a);
     }else if ( d > b){
         printf("%d는 특별한 수이다.", a);

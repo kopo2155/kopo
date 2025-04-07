@@ -6,8 +6,10 @@ int main()
     float a = 0;
     scanf("%f", &a);
     
-    if (a == (int) a) {
-      switch((int)a) { 
+    if (a == (int) a)
+    {
+      switch((int)a)
+      { 
         case(0):
           printf("A");
           break;
@@ -40,9 +42,10 @@ int main()
           break;
         default:
           printf("잘못된 입력입니다.");    
-     }    
+      }    
     }
-    else {
+    else
+    {
       printf("정수를 입력하세요.");
     }
     return 0;   

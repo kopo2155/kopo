@@ -10,7 +10,7 @@ int main()
     scanf("%f", &b);
     scanf("%f", &c);
    
-    if(c == 0) {
+    if (c == 0) {
         printf("세번째 값이 잘못되었습니다.");
     } else if (a == (int)a && b == (int)b && c == (int)c) {
         result = ((int)a + (int)b) * (int)c - ((int)a - (int)b) / (int)c;

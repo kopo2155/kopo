@@ -4,7 +4,8 @@ int main()
    float a = 0;
    float b = 0; 
    float c = 0;
-   int result = 0; 
+   int result = 0;
+
    scanf("%f", &a);
    scanf("%f", &b);
    scanf("%f", &c);

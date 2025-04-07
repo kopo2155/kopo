@@ -15,8 +15,7 @@ int main()
    else if ( a == (int) a && b == (int) b && c == (int) b)
    {
      result = ((int) a + (int) b) * (int) c - ((int) a - (int) b) / (int) c;
-     printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d",
-             (int) a, (int) b, (int) c, (int) a, (int) b, (int) c, result);
+     printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", (int) a, (int) b, (int) c, (int) a, (int) b, (int) c, result);
    }
    else
    {

@@ -5,13 +5,13 @@ int main()
             continue;
         } 
         int k = 1;
-        for(int j = 202302; j < 202306; j++) {
+        for (int j = 202302; j < 202306; j++) {
             if(j == i) {
                 k = 0;
                 continue;
             }
         }
-        if(k == 1) {
+        if (k == 1) {
             printf("%d\n", i);
         }
     }

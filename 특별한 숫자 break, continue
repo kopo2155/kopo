@@ -11,8 +11,8 @@ int main()
    
     for(int i = a; i <= b; i++) {
         int i1 = i % 10 ;
-        int i2 = i % 100 % 10;
-        int i3 = i % 1000 % 100 % 10;
+        int i2 = ((i % 100) - i1) / 10;
+        int i3 = (i - i1 - 10 * i2) / 100;
         if(i % 7 == 0 || i1 == 7 || i2 == 7 || i3 == 7) {
             continue;
         } else if(i % 5 == 0) {

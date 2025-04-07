@@ -1,0 +1,17 @@
+int main()
+{
+    for(int i = 202001; i < 202505; i++) {
+        int l = 1;
+        for(int j = 202302; j < 202305; j++) {
+            if(j == i) {
+                l = 0;
+                continue;
+            }
+        }
+        if(l) {
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+

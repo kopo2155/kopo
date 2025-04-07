@@ -13,10 +13,10 @@ int main()
    {
      printf("세번째 값이 잘못되었습니다.");
    }
-   else if ( a == (int) a && b == (int) b && c == (int) c)
+   else if (a == (int) a && b == (int) b && c == (int) c)
    {
-     result = ((int) a + (int) b) * (int) c - ((int) a - (int) b) / (int) c;
-     printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", (int) a, (int) b, (int) c, (int) a, (int) b, (int) c, result);
+     result = ((int)a + (int)b) * (int)c - ((int)a - (int)b) / (int)c;
+     printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", (int)a, (int)b, (int)c, (int)a, (int)b, (int)c, result);
    }
    else
    {

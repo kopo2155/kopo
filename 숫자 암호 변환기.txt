@@ -5,8 +5,8 @@ int main()
     float a = 0;
     scanf("%f", &a);
     
-    if (a == (int) a) {
-        switch((int)a)
+    if (a == (int)a) {
+        switch(a)
         {
         case(0):
           printf("A");

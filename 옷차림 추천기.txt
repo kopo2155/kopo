@@ -24,7 +24,7 @@ int main()
      A = 6;
    }   
                  
-   switch ((int)A){
+   switch ((int)A) {
      case(1):
        printf("%0.2f도 : 너무 더워요! 반팔과 반바지를 입으세요.", a);
        break;

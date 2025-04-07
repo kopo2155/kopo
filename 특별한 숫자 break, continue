@@ -9,13 +9,13 @@ int main()
     scanf("%d", &b);
  
    
-    for(int i = a; i <= b; i++) {
+    for (int i = a; i <= b; i++) {
         int i1 = i % 10 ;
         int i2 = ((i % 100) - i1) / 10;
         int i3 = (i - i1 - 10 * i2) / 100;
-        if(i % 7 == 0 || i1 == 7 || i2 == 7 || i3 == 7) {
+        if (i % 7 == 0 || i1 == 7 || i2 == 7 || i3 == 7) {
             continue;
-        } else if(i % 5 == 0) {
+        } else if (i % 5 == 0) {
             printf("%d\n", i);
             break;
         } else {

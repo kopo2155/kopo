@@ -12,8 +12,8 @@ int main()
    if (c == 0) {
      printf("세번째 값이 잘못되었습니다.");
    } else if (a == (int)a && b == (int)b && c == (int)c) {
-     result = ((int)a + (int)b) * (int)c - ((int)a - (int)b) / (int)c;
-     printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", (int)a, (int)b, (int)c, (int)a, (int)b, (int)c, result);
+     result = (a + b) * c - (a - b) / c;
+     printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", a, b, c, a, b, c, result);
    } else {
      printf("정수를 입력하세요.");
    }

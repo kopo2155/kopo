@@ -8,11 +8,11 @@ int main()
  int number[6];
  int j = 0;
  
-   for(int i = 0; i < 6; i++) {
+   for (int i = 0; i < 6; i++) {
        srand(time(NULL));
        number[i] = (int)(rand() % 45) + 1;
-       for(j = 0; j < i; j++) {
-           if(number[i] == number[j]) {
+       for (j = 0; j < i; j++) {
+           if (number[i] == number[j]) {
                i--;
            }
        }
@@ -20,10 +20,10 @@ int main()
        sleep(1);
    }
  printf("\n**********************\n");
-   for(int i = 0; i < 5; i++) {
+   for (int i = 0; i < 5; i++) {
        value = number[i + 1];
-       for(j = i; j > -1; j--) {
-           if(number[j] > value) {
+       for (j = i; j > -1; j--) {
+           if (number[j] > value) {
                number[j + 1] = number[j];
            } else {
                break;
@@ -32,7 +32,7 @@ int main()
        number[j + 1] = value;
    }
     
-   for(int i = 0; i < 6; i++) {
+   for (int i = 0; i < 6; i++) {
        printf("%d ", number[i]);  
    }
     return 0;

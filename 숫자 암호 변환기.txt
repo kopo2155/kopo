@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 int main()
@@ -7,8 +6,8 @@ int main()
     scanf("%f", &a);
     
     if (a == (int) a) {
-      switch((int)a)
-      { 
+        switch((int)a)
+        {
         case(0):
           printf("A");
           break;
@@ -41,7 +40,7 @@ int main()
           break;
         default:
           printf("잘못된 입력입니다.");    
-      }    
+        }    
     } else {
       printf("정수를 입력하세요.");
     }

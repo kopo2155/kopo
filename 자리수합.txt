@@ -10,9 +10,9 @@ int main()
     int d = (((int)a % 1000) - c - b) / 100;
     result = b + c + d ;
     if (a == (int)a && a < 1000) {
-      printf("%d", result);    
+        printf("%d", result);    
     } else {
-      printf("세자리 정수를 입력하세요");
+        printf("세자리 정수를 입력하세요");
     }    
     return 0;
 }

@@ -1,22 +1,22 @@
 #include <stdio.h>  
 int main()
 {
-   float a = 0;
-   float b = 0; 
-   float c = 0;
-   int result = 0;
+    float a = 0;
+    float b = 0; 
+    float c = 0;
+    int result = 0;
 
-   scanf("%f", &a);
-   scanf("%f", &b);
-   scanf("%f", &c);
+    scanf("%f", &a);
+    scanf("%f", &b);
+    scanf("%f", &c);
    
-   if (c == 0) {
-       printf("세번째 값이 잘못되었습니다.");
-   } else if (a == (int)a && b == (int)b && c == (int)c) {
-       result = ((int)a + (int)b) * (int)c - ((int)a - (int)b) / (int)c;
-       printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", (int)a, (int)b, (int)c, (int)a, (int)b, (int)c, result);
-   } else {
-       printf("정수를 입력하세요.");
-   }
-   return 0;
+    if (c == 0) {
+        printf("세번째 값이 잘못되었습니다.");
+    } else if (a == (int)a && b == (int)b && c == (int)c) {
+        result = ((int)a + (int)b) * (int)c - ((int)a - (int)b) / (int)c;
+        printf("연산결과 : (%d + %d) * %d - (%d - %d) / %d = %d", (int)a, (int)b, (int)c, (int)a, (int)b, (int)c, result);
+    } else {
+        printf("정수를 입력하세요.");
+    }
+    return 0;
 }

@@ -3,8 +3,7 @@ int main()
     for(int i = 202001; i < 202505; i++) {
         if (i % 100 > 12 || i % 100 == 0) {
             continue;
-        }
-        
+        } 
         int l = 1;
         for(int j = 202302; j < 202305; j++) {
             if(j == i) {
@@ -12,7 +11,7 @@ int main()
                 continue;
             }
         }
-        if(l) {
+        if(l == 1) {
             printf("%d\n", i);
         }
     }

@@ -16,7 +16,7 @@ int main()
         if(i % 7 == 0 || i1 == 7 || i2 == 7 || i3 == 7) {
             continue;
         } else if(i % 5 == 0) {
-            printf("%d\n", a);
+            printf("%d\n", i);
             break;
         } else {
             printf("%d\n", i);

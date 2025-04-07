@@ -11,8 +11,8 @@ int main()
    for (int i = 0; i < 6; i++) {
      srand(time(NULL));
      number[i] = (int)(rand() % 45) + 1;
-     for(int j = i + 1; j <= i; j++){
-         if (number[i] = number[j]){
+     for(int j = 0; j < i; j++){
+         if (number[i] == number[j]){
              i--;
          }
         }

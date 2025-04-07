@@ -6,21 +6,27 @@ int main()
     int A = 0;
     float a = 0;
     scanf("%f", &a);
-    if( (int)a >= 90) {
+    if( (int)a >= 90)
+    {
       A = 1;
     }
-    else if( (int)a >= 80) {
+    else if( (int)a >= 80)
+    {
       A = 2;
     }
-    else if( (int)a >= 70) {
+    else if( (int)a >= 70)
+    {
       A = 3;
     }
-    else if( (int)a >= 60) {
+    else if( (int)a >= 60)
+    {
       A = 4;
     }   
      
-    if ( a > 0 && a == (int) a) {
-      switch((int)A) {
+    if ( a > 0 && a == (int) a)
+    {
+      switch((int)A)
+      {
         case(1):
           printf("A등급 : %0.2f(추가 보너스 10%)", a * 1.1);
           break;
@@ -37,7 +43,8 @@ int main()
           printf("F등급 : %0.2f(추가보너스 없음)", a);
       }
     }
-    else {
+    else
+    {
         printf("잘못된 입력입니다.");
     }
     return 0;

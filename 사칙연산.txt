@@ -8,6 +8,7 @@ int main()
    scanf("%f", &a);
    scanf("%f", &b);
    scanf("%f", &c);
+   
    if (c == 0)
    {
      printf("세번째 값이 잘못되었습니다.");

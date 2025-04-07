@@ -9,10 +9,10 @@ int main()
     int c = (((int)a % 100) - b) / 10;
     int d = (((int)a % 1000) - c - b) / 100;
     result = b + c + d ;
-    if (a == (int)a){
+    if (a == (int)a) {
       printf("%d", result);    
     }
-    else{
+    else {
       printf("정수를 입력하세요");
     }    
     return 0;

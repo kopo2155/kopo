@@ -17,7 +17,7 @@ int main()
         A = 4;
     }   
      
-    if( a > 0 && a == (int) a) {
+    if( a > 0 && a == a) {
         switch(A)
         {
             case 1:

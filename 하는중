@@ -1,0 +1,57 @@
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    struct groups {
+        int n;
+        char *a;
+        int b;
+        char c;
+        char *d;
+    };
+    
+    struct groups g[5];
+   // struct groups g[1];
+        g[1].n = 1;
+        g[1].a = "hong";
+        g[1].b = 30;
+        g[1].c = 'M';
+        g[1].d = "soccer";
+//    struct groups g2;
+        g[2].n = 2;
+        g[2].a = "kim";
+        g[2].b = 25; 
+        g[2].c = 'M';
+        g[2].d =  "music";
+  //  struct groups g3;
+        g[3].n = 3;
+        g[3].a = "park";
+        g[3].b = 20;
+        g[3].c = 'F';
+        g[3].d =  "movie";
+
+ 
+    for (int i = 4; i <= 5; i++) {
+
+        printf("순번 이름 나이 성별 취미순으로 입력하세요\n");
+        for (int j = 1; j < i; j++) {
+            printf("%d %s %d %c %s\n", g[j].n, g[j].a, g[j].b, g[j].c, g[j].d);
+        }
+        //scanf("%d %s %d %c %s", &g[i].n, &g[i].a, &g[i].b, &g[i].c, &g[i].d);
+        scanf("%d",&g[i].n);
+        scanf("%s",g[i].a);
+        scanf("%d",&g[i].b);
+        scanf("%c",&g[i].c);
+        scanf("%s",g[i].d);
+        //printf("%d %s %d %c %s", g[i].n, g[i].a, g[i].b, g[i].c, g[i].d);
+        printf("\n");
+          }
+     
+   
+    return 0;
+}

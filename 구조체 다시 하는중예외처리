@@ -33,58 +33,63 @@ int list(int start, int max)
         g[3].d =  "movie";
     for (int i = start; i <= max; i++) {
         printf("순번 이름 나이 성별 취미순으로 입력하세요\n");
+        printf("입력중지를 원할시 이름에 stop 입력\n");
+        g[i].a = (char *)malloc(100 * sizeof(char)); //동적 메모리 할당
+        g[i].d = (char *)malloc(100 * sizeof(char));
         for (int j = 1; j < i; j++) {
-            g[i].a = (char *)malloc(100 * sizeof(char)); //동적 메모리 할당
-            g[i].d = (char *)malloc(100 * sizeof(char));
             printf("%d %s %d %c %s\n", g[j].n, g[j].a, g[j].b, g[j].c, g[j].d);
         }
-            printf("순번 입력");
-            scanf("%d",&g[i].n);
-            if (g[i].n == (int) g[i].n){
-            } else if(g[i].n != (int) g[i].n) {
-                printf("정수를 입력하세요");
-                i = i - 1;
-                continue;
-            }
-            printf("이름 입력");
-            scanf("%s",g[i].a);
-            printf("나이 입력");
-            getchar();
-            scanf("%d",&g[i].b);
-            if (g[i].b >= 100 || g[i].b <= 0) {
-                printf("올바른 나이값을 넣으세요\n");
-                i = i - 1;
-                continue;
-            } else if (g[i].b != (int) g[i].b) {
-                printf("정수를 입력하세요");
-                i = i - 1;
-                continue;
-            }
-            getchar();
-            printf("성별 입력");
-            scanf("%c",&g[i].c);
-            if (g[i].c == 'F') {
-                
-            } else if (g[i].c =='M') {
-                
-            } else if (g[i].c != (char) g[i].c) {
-                printf("기호를 입력하지 마세요\n");  
-                i = i - 1;
-                continue;
-            } else {
-                printf("성별을 M/F중에 입력하세요\n");
-                i = i - 1;
-                continue;
-            }
-            getchar();
-            printf("취미 입력없는 경우 N입력");
-            scanf("%s",g[i].d);
-            if (g[i].d == "") {
-                printf("다시 입력해주세요");
-            } else if ( g[i].d == 'N') {
-                g[i].d = " ";
-            }
-            printf("\n"); 
+        printf("순번 입력");
+        scanf("%d",&g[i].n);
+        if (g[i].n == (int) g[i].n){
+        } else if(g[i].n != (int) g[i].n) {
+            printf("정수를 입력하세요");
+            i = i - 1;
+            continue;
+        }
+        printf("이름 입력");
+        scanf("%s",g[i].a);
+        if (strcmp(g[i].a, "stop") == 0) {
+            printf("입력을 종료합니다.\n");
+            free(g[i].a);
+            free(g[i].d);
+            break;
+        }
+        printf("나이 입력");
+        getchar();
+        scanf("%d",&g[i].b);
+        if (g[i].b >= 100 || g[i].b <= 0) {
+            printf("올바른 나이값을 넣으세요\n");
+            i = i - 1;
+            continue;
+        } else if (g[i].b != (int) g[i].b) {
+            printf("정수를 입력하세요");
+            i = i - 1;
+            continue;
+        }
+        getchar();
+        printf("성별 입력");
+        scanf("%c",&g[i].c);
+        if (g[i].c == 'F') {
+        } else if (g[i].c =='M') {
+        } else if (g[i].c != (char) g[i].c) {
+            printf("기호를 입력하지 마세요\n");  
+            i = i - 1;
+            continue;
+        } else {
+            printf("성별을 M/F중에 입력하세요\n");
+            i = i - 1;
+            continue;
+        }
+        getchar();
+        printf("취미 입력없는 경우 N입력");
+        scanf("%s",g[i].d);
+        if (strcmp(g[i].d, "N") == 0) {
+            strcpy(g[i].d, "없음");
+        } else if (strcmp(g[i].d, "") == 0) {
+            printf("다시 입력하세요");
+        }
+        printf("\n"); 
         
     }
     for (int i = 0; i < max; i++) {

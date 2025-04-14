@@ -37,24 +37,21 @@ int main()
 
  
     for (int i = 4; i <= 100; i++) {
-
         printf("순번 이름 나이 성별 취미순으로 입력하세요\n");
         for (int j = 1; j < i; j++) {
             g[i].a = (char *)malloc(100 * sizeof(char)); //동적 메모리 할당
             g[i].d = (char *)malloc(100 * sizeof(char));
             printf("%d %s %d %c %s\n", g[j].n, g[j].a, g[j].b, g[j].c, g[j].d);
         }
-        //scanf("%d %s %d %c %s", &g[i].n, &g[i].a, &g[i].b, &g[i].c, &g[i].d);
         scanf("%d",&g[i].n);
         scanf("%s",g[i].a);
         scanf("%d",&g[i].b); // scanf사용시 엔터사용으로 인해 \n값이 다음에 입력되는 것을 방지
         getchar();
         scanf("%c",&g[i].c);//%c는 %s나 %d와 달리 공백을 입력받기 때문에 getchar()를 한번만 사용
         scanf("%s",g[i].d);
-        //printf("%d %s %d %c %s", g[i].n, g[i].a, g[i].b, g[i].c, g[i].d);
         printf("\n");
-          }
-         for (int i = 0; i < 5; i++) {
+    }
+    for (int i = 0; i < 5; i++) {
         free(g[i].a); // 메모리 할당 해제
         free(g[i].d);
     }

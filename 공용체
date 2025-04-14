@@ -1,0 +1,20 @@
+#include <stdio.h>
+    union common{
+        int intVal;
+        float floatVal;
+        char charVal;
+    };
+    
+int main()
+{
+
+    
+    union common a;
+    a.intVal = 15;
+    printf("%d %d\n", a.intVal, &a.intVal);
+    a.floatVal = 20;
+    printf("%f %d\n", a.floatVal, &a.floatVal);
+    a.charVal = 'A';
+    printf("%c %d\n", a.charVal, &a.charVal);
+    return 0;
+}

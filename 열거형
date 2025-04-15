@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main()
+{
+    enum carvar {etc, sedan, suv, truck, van};
+    enum carvar c;
+    char car[100];
+    scanf("%s", car);
+    if (strcmp(car, "sedan") == 0) {
+        c = sedan;
+
+    } else if (strcmp(car, "suv") == 0) {
+        c = suv;
+       
+    } else if (strcmp(car, "truck") == 0) {
+        c = truck;
+        
+    } else if (strcmp(car, "van") == 0) {
+        c = van;
+       
+    } else {
+        c = etc;
+    }    
+    
+    switch(c) {
+        case sedan:
+            //printf("%s\n", c);
+            printf("이 차는 세단\n");
+            break;
+        case suv:
+            //printf("%s\n", c);
+            printf("이 차는 suv\n");
+            break;
+        case truck:
+            //printf("%s\n", c);
+            printf("이 차는 트럭\n");
+            break;
+        case van:
+            //printf("%s\n", c);
+            printf("이 차는 밴\n");
+            break;
+        case etc:
+            //printf("%s\n", c);
+            printf("이 차는 ETC\n");
+            break;    
+        
+    }
+    
+    return 0;
+}

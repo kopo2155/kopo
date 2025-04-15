@@ -19,7 +19,6 @@ int calendar()
     scanf("%d", &inmonth);
     m = inmonth;
     
-    
     for(int yearname = 2025; yearname <= year; yearname++ ){
 
         if (yearname == year) {
@@ -94,6 +93,12 @@ int nowtime()
     int dyear;
     int dmonth;
     int dday;
+    int remain_day;
+    int remain_month;
+    int input_monthday = 0;
+    int input_monthday1 = 0;
+    int endday[] =  {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int yearday = 365;
     time_t seconds = time(NULL);
     struct tm *now = localtime(&seconds);
     printf("디데이 연도 입력");
@@ -102,20 +107,26 @@ int nowtime()
     scanf("%d", &dmonth);
     printf("디데이 일 입력");
     scanf("%d", &dday);
-    printf(" %04d년 %02d월 %02d일 남음\n", dyear - (1900 + now->tm_year), 
-            abs(dmonth - (now->tm_mon + 1)), abs(dday - (now->tm_mday)));
-
+   
+    if (dyear % 4 == 0) {
+        yearday = 366;
+    }        
+    for (int i = 1; i < dmonth; i++) {
+        input_monthday = input_monthday + endday[i-1];
+    }
     
+    for (int j = 1; j < now->tm_mon + 1; j++) {
+        input_monthday1 = input_monthday1 + endday[j-1];
+    }
+    
+    remain_month = input_monthday - input_monthday1;
+    remain_day = yearday * (dyear - (1900 + now->tm_year)) + remain_month + dday - (now->tm_mday);
+    printf("%d년 %d월 %d일 까지 %d일 남았습니다.\n", dyear, dmonth, dday, remain_day);
     return 0;
 }
-int caltime(int year, int goaldate)
-{
-    
-}
+
 int main()
 {
     calendar();
     nowtime();
-    
-   
 }

@@ -1,62 +1,128 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main()
+union student {
+    char *hobby;
+    char *etc;
+};
+struct groups {
+    int n;
+    char *a;
+    int b;
+    char c;
+    union student student;
+    int is_hobby_set;
+};
+int list(int start, int max)
 {
-    struct groups {
-        int *n;
-        char *a;
-        int *b;
-        char *c;
-    };
-    union student{
-        char hobby;
-        char etc;
-    };
-    struct groups g[5];
+
+    struct groups g[100];
+
    // struct groups g[1];
         g[1].n = 1;
         g[1].a = "hong";
         g[1].b = 30;
         g[1].c = 'M';
-    union student gg[1];
-        strcpy(gg[1].etc, "soccer");
-        strcpy(gg[1].etc, "nothing");
+        g[1].student.hobby = strdup("soccer");
+        g[1].is_hobby_set = 1;
+
 //    struct groups g2;
         g[2].n = 2;
         g[2].a = "kim";
         g[2].b = 25; 
         g[2].c = 'M';
-    //union student gg[2];
-        strcpy(gg[2].etc, "soccer");
-        strcpy(gg[2].etc, "nothing");
+        g[2].student.hobby = strdup("music");
+        g[2].is_hobby_set = 1;
+
   //  struct groups g3;
         g[3].n = 3;
         g[3].a = "park";
         g[3].b = 20;
         g[3].c = 'F';
-    //union student gg[3];
-        strcpy(gg[3].etc,"movie");
-        strcpy(gg[3].etc, "nothing");
- 
-    for (int i = 4; i <= 100; i++) {
+        g[3].student.hobby = strdup("movie");
+        g[3].is_hobby_set = 1;
+
+    for (int i = start; i <= max; i++) {
         printf("순번 이름 나이 성별 취미순으로 입력하세요\n");
+        printf("입력중지를 원할시 이름에 stop 입력\n");
+        g[i].a = (char *)malloc(100 * sizeof(char)); //동적 메모리 할당
+        g[i].student.hobby = (char *)malloc(100 * sizeof(char));
+        g[i].student.etc = (char *)malloc(100 * sizeof(char));
         for (int j = 1; j < i; j++) {
-            g[i].a = (char *)malloc(100 * sizeof(char)); //동적 메모리 할당
-            printf("%d %s %d %c %s %s\n", g[j].n, g[j].a, g[j].b, g[j].c, gg[j].hobby, gg[j].etc);
+            printf("%d %s %d %c ", g[j].n, g[j].a, g[j].b, g[j].c);
+            if (g[j].is_hobby_set == 1) {
+                printf("%s\n", g[j].student.hobby);
+            } else {
+                printf("%s\n", g[j].student.etc);
+            }
         }
+        printf("순번 입력");
         scanf("%d",&g[i].n);
+        if (g[i].n == (int) g[i].n){
+        } else if(g[i].n != (int) g[i].n) {
+            printf("정수를 입력하세요");
+            i = i - 1;
+            continue;
+        }
+        printf("이름 입력");
         scanf("%s",g[i].a);
-        scanf("%d",&g[i].b); // scanf사용시 엔터사용으로 인해 \n값이 다음에 입력되는 것을 방지
+        if (strcmp(g[i].a, "stop") == 0) {
+            printf("입력을 종료합니다.\n");
+            free(g[i].a);
+            free(g[i].student.hobby);
+            free(g[i].student.etc);
+            break;
+        }
+        printf("나이 입력");
         getchar();
-        scanf("%c",&g[i].c);//%c는 %s나 %d와 달리 공백을 입력받기 때문에 getchar()를 한번만 사용
-        scanf("%s",gg[i].hobby);
-        scanf("%s",gg[i].etc);
-        printf("\n");
+        scanf("%d",&g[i].b);
+        if (g[i].b >= 100 || g[i].b <= 0) {
+            printf("올바른 나이값을 넣으세요\n");
+            i = i - 1;
+            continue;
+        } else if (g[i].b != (int) g[i].b) {
+            printf("정수를 입력하세요");
+            i = i - 1;
+            continue;
+        }
+        getchar();
+        printf("성별 입력");
+        scanf("%c",&g[i].c);
+        if (g[i].c == 'F') {
+        } else if (g[i].c =='M') {
+        } else if (g[i].c != (char) g[i].c) {
+            printf("기호를 입력하지 마세요\n");  
+            i = i - 1;
+            continue;
+        } else {
+            printf("성별을 M/F중에 입력하세요\n");
+            i = i - 1;
+            continue;
+        }
+        getchar();
+        printf("취미 입력 없는 경우 N입력\n");
+        scanf("%s",g[i].student.hobby);
+        if (strcmp(g[i].student.hobby, "N") == 0) {
+            g[i].is_hobby_set == 1;
+            printf("기타사항 입력 없는경우 N입력\n");
+            scanf("%s",g[i].student.etc);
+        } else {
+            g[i].is_hobby_set == 0;
+        }
+        printf("\n"); 
     }
-    for (int i = 0; i < 5; i++) {
-        free(g[i].a); // 메모리 할당 해제
-        
+    for (int i = 0; i < max; i++) {
+        free(g[i].a);
+        free(g[i].student.hobby);
+        free(g[i].student.etc);
+        // 메모리 할당 해제
+       
     }
-   
+    return 0;
+}   
+int main()
+{
+    list(4, 100); //기존의 입력값을 출력하기 위해 4번째 순번부터 시작작
     return 0;
 }

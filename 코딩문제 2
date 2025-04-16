@@ -1,0 +1,31 @@
+#include <stdio.h>
+int num()
+{
+    int a = 0;
+    int end = 1;
+    int start = 0;
+    scanf("%d", &a);
+    
+    for (int i = 1; i < a + 1 ; i++) {
+        for (int j = a; j >= i; j--) {
+            printf("  ");
+        }
+        if (a == 1) {
+            end = 1;
+        } else {
+        end = end + (i-1);
+        }
+        for(int k = end; k < end + i; k++) {
+            printf("%3d ", k);
+        }
+        printf("\n");
+    }
+}
+
+
+int main() 
+{
+    
+    num();
+    
+}

@@ -5,10 +5,8 @@ int p(int c)
     else if (c == 1) return 1;
     else return p(c - 1) +  p(c - 2);
 }
-int main()
-{
-    int a;
-    int b;
+int lol()
+{   int a;
     int sum = 0;
     int odd = 0;
     int even = 0;
@@ -25,7 +23,10 @@ int main()
         }
     }
     printf("\n합 : %d", sum);
-    printf("\n홀/짝 %d / %d", odd, even);
-    
+    printf("\n홀/짝 : %d / %d", odd, even);
+}    
+int main()
+{
+    lol();
     return 0;
 }

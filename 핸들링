@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    // 파일 경로를 올바르게 지정 (백슬래시 두 번 사용)
+    FILE *file = fopen("C:\\Users\\USER\\Desktop\\day_data\\lotto.csv", "r");
+    if (file == NULL) {
+        perror("파일을 열 수 없습니다");
+        return 1;
+    }
+
+    char line[1024];
+    int line_num = 0;
+
+    // 파일의 내용을 저장할 임시 배열 (결과를 다른 파일에 저장하기 위함)
+    char *lines[1024];
+    int line_count = 0;
+
+    // 파일을 한 줄씩 읽으면서 처리
+    while (fgets(line, sizeof(line), file)) {
+        // 줄 끝 개행 문자 제거
+        line[strcspn(line, "\r\n")] = '\0';
+
+        // 첫 줄은 헤더로 출력
+        if (line_num == 0) {
+            printf("==== 헤더 ====\n");
+            char *token = strtok(line, ",");  // 구분자 변경: 콤마
+            while (token != NULL) {
+                printf("%s\t", token);
+                token = strtok(NULL, ",");  // 구분자 변경: 콤마
+            }
+            // 새로운 열 제목 추가
+            printf("valuesum\n");
+            printf("==============\n");
+
+            // 해당 줄을 저장 (헤더에는 새로운 열 제목도 추가)
+            // strdup 대신 malloc과 strcpy 사용
+            lines[line_count] = (char *)malloc(strlen(line) + 1);
+            strcpy(lines[line_count], line);
+            line_count++;
+            line_num++;
+            continue;  // 첫 줄을 건너뛰고 다음 줄로 넘어갑니다.
+        }
+
+        // 데이터 출력 및 새로운 열 추가
+        char *token = strtok(line, ",");  // 구분자 변경: 콤마
+        int col_idx = 0;
+        int row_sum = 0;  // 각 행의 합을 계산하기 위한 변수
+        while (token != NULL) {
+            printf("%s\t", token);
+            if (col_idx > 0) {  // B열부터 끝까지 합 계산 (B열이 1번째로 시작)
+                row_sum += atoi(token);  // 문자열을 정수로 변환 후 합산
+            }
+            token = strtok(NULL, ",");  // 구분자 변경: 콤마
+            col_idx++;
+        }
+
+        // 새로운 열 값 추가 (각 행의 합)
+        printf("%d\n", row_sum);
+
+        // 해당 줄을 새로운 열 값을 포함해서 저장
+        char new_line[1024];
+        snprintf(new_line, sizeof(new_line), "%s,%d", line, row_sum);
+        
+        // strdup 대신 malloc과 strcpy 사용
+        lines[line_count] = (char *)malloc(strlen(new_line) + 1);
+        strcpy(lines[line_count], new_line);
+        line_count++;
+    }
+
+    fclose(file);  // 파일을 닫고
+
+    // 새로운 데이터를 새로운 파일에 저장
+    FILE *output_file = fopen("C:\\Users\\USER\\Desktop\\day_data\\lotto_with_new_column.csv", "w");
+    if (output_file == NULL) {
+        perror("파일을 열 수 없습니다");
+        return 1;
+    }
+
+    // 저장한 각 줄을 새 파일에 기록
+    for (int i = 0; i < line_count; i++) {
+        fprintf(output_file, "%s\n", lines[i]);
+        free(lines[i]);  // 동적으로 할당한 메모리 해제
+    }
+
+    fclose(output_file);  // 새로운 파일을 닫고
+
+    printf("새로운 파일에 데이터가 저장되었습니다: lotto_with_new_column.csv\n");
+
+    return 0;
+}

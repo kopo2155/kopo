@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_FIELDS 20
+
+int main() {
+    FILE *file = fopen("C:\\Users\\USER\\Desktop\\traffic.csv", "r");
+    if (file == NULL) {
+        perror("원본 파일 열기 실패");
+        return 1;
+    }
+
+    FILE *out = fopen("C:\\Users\\USER\\Desktop\\result.csv", "w");
+    if (out == NULL) {
+        perror("출력 파일 열기 실패");
+        fclose(file);
+        return 1;
+    }
+
+    char line[1024];
+    int line_num = 0;
+
+    // 헤더 출력
+    fprintf(out, "year,accident,dead,car,license\n");
+
+    while (fgets(line, sizeof(line), file)) {
+        line_num++;
+
+        if (line_num < 3) continue;  // 헤더 건너뜀 (필요에 따라 조정)
+
+        line[strcspn(line, "\r\n")] = 0;
+
+        char *fields[MAX_FIELDS];
+        char *token = strtok(line, ",");
+        int i = 0;
+
+        while (token != NULL && i < MAX_FIELDS) {
+            fields[i++] = token;
+            token = strtok(NULL, ",");
+        }
+
+        if (i > 11) {
+            fprintf(out, "%s,%s,%s,%s,%s\n",
+                    fields[0],   // year
+                    fields[1],   // accident
+                    fields[3],   // dead
+                    fields[7],   // car
+                    fields[11]); // license
+        }
+    }
+
+    fclose(file);
+    fclose(out);
+    return 0;
+}

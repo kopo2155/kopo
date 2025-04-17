@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_FIELDS 100  // 필드 개수를 충분히 크게 설정 (열의 수가 많을 때)
+
+int to_int(char *str) {
+    // 쉼표가 포함된 숫자 문자열을 정수로 변환하는 함수
+    char *p = str, cleaned[64];
+    int i = 0;
+    while (*p) {
+        if (*p != ',') cleaned[i++] = *p;
+        p++;
+    }
+    cleaned[i] = '\0';
+    return atoi(cleaned);  // 문자열을 정수로 변환
+}
+
+int main() {
+    FILE *file = fopen("C:\\Users\\USER\\Desktop\\dead.csv", "r");
+    if (file == NULL) {
+        perror("원본 파일 열기 실패");
+        return 1;
+    }
+
+    FILE *out = fopen("C:\\Users\\USER\\Desktop\\deadresult.csv", "w");
+    if (out == NULL) {
+        perror("출력 파일 열기 실패");
+        fclose(file);
+        return 1;
+    }
+
+    char line[1024];
+    int line_num = 0;
+    int total_fields = 0;
+
+    // 각 필드에 대해 합계를 계산할 변수 배열 초기화
+    int sum_fields[MAX_FIELDS] = {0};
+    int sum1_fields[MAX_FIELDS] = {0};  // 3~8행의 합
+    int sum2_fields[MAX_FIELDS] = {0};  // 9~11행의 합
+
+    // 헤더 처리용
+    char header_line[1024] = {0};
+
+    while (fgets(line, sizeof(line), file)) {
+        line_num++;
+
+        line[strcspn(line, "\r\n")] = 0;  // 개행 문자 제거
+
+        if (line_num == 2) {
+            // 두 번째 행을 그대로 헤더로 출력
+            strcpy(header_line, line);
+            fprintf(out, "%s\n", header_line);
+            continue;
+        }
+
+        if (line_num < 3) continue;  // 첫 번째 두 줄 건너뛰기
+
+        char *fields[MAX_FIELDS];
+        char *token = strtok(line, ",");
+        int i = 0;
+
+        while (token != NULL && i < MAX_FIELDS) {
+            fields[i++] = token;
+            token = strtok(NULL, ",");
+        }
+
+        // 필드 수 계산 (첫 번째 유효한 데이터에서만)
+        if (line_num == 3) {
+            total_fields = i;
+        }
+
+        if (i > 0) {
+            // 1열은 제외하고 합계 계산 (2열부터 계산)
+            for (int j = 1; j < i; j++) {
+                sum_fields[j] += to_int(fields[j]);
+
+                // 3~8행 합계 (sum1_fields)
+                if (line_num >= 4 && line_num <= 9) {
+                    sum1_fields[j] += to_int(fields[j]);
+                }
+
+                // 9~11행 합계 (sum2_fields)
+                if (line_num >= 10 && line_num <= 12) {
+                    sum2_fields[j] += to_int(fields[j]);
+                }
+            }
+
+            // 2행에서 12행까지의 데이터 출력 (1열 포함)
+            if (line_num <= 12) {
+                for (int j = 0; j < i; j++) {  // 1열도 포함하여 모든 필드 출력
+                    fprintf(out, "%s", fields[j]);
+                    if (j < i - 1) {
+                        fprintf(out, ",");
+                    }
+                }
+                fprintf(out, "\n");
+            }
+        }
+    }
+
+    // 13번째 행: 3~8행의 합계
+    fprintf(out, "합계1");
+    for (int j = 1; j < total_fields; j++) {  // 1열 포함
+        fprintf(out, ",%d", sum1_fields[j]);
+    }
+    fprintf(out, "\n");
+
+    // 14번째 행: 9~11행의 합계
+    fprintf(out, "합계2");
+    for (int j = 1; j < total_fields; j++) {  // 1열 포함
+        fprintf(out, ",%d", sum2_fields[j]);
+    }
+    fprintf(out, "\n");
+
+    fclose(file);
+    fclose(out);
+    return 0;
+}
